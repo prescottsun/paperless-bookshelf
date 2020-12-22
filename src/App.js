@@ -7,7 +7,6 @@ import { Grid } from "@material-ui/core";
 import Search from "./components/Search";
 
 import UserBookshelf from "./components/UserBookshelf";
-import { auth, firestore } from "./firebase";
 import AuthContextProvider from "./contexts/AuthContext";
 import AuthorDetails from "./components/AuthorDetails";
 
@@ -26,9 +25,7 @@ function App() {
 								<Route exact path="/search" component={Search} />
 								<Route exact path="/books/:id?" component={BookDetails} />
 								<Route exact path="/authors/:id?" component={AuthorDetails} />
-								<Route exact path="/bookshelf">
-									<UserBookshelf />
-								</Route>
+								<Route exact path="/bookshelf" component={UserBookshelf} />
 							</Switch>
 						</Grid>
 					</ApiContextProvider>

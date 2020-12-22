@@ -6,7 +6,7 @@ export const ApiContext = createContext();
 
 const ApiContextProvider = (props) => {
 	const [searchResults, setSearchResults] = useState([]);
-	const apiKey = "xtS7NF5rjX5fcxIcCuIuDQ";
+	const apiKey = process.env.REACT_APP_API_KEY;
 
 	const xmlConversion = (data) => {
 		return convert.xml2js(data, {

@@ -45,7 +45,7 @@ const AuthorDetails = () => {
 				<CardContent>
 					<Grid>
 						<CardMedia title={author.name.data}>
-							<img src={author.image_url.data} alt="book cover image" />
+							<img src={author.image_url.data} alt="book cover" />
 						</CardMedia>
 					</Grid>
 					<Typography gutterBottom variant="h5">
@@ -60,7 +60,7 @@ const AuthorDetails = () => {
 				</CardContent>
 				<CardActions>
 					<Button size="small">
-						<a href={author.link.data} target="_blank">
+						<a href={author.link.data} target="_blank" rel="noreferrer">
 							View Author on GoodReads
 						</a>
 					</Button>

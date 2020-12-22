@@ -1,10 +1,10 @@
-import { Container, Grid, InputBase, Typography } from "@material-ui/core";
+import { Container, Paper, Typography } from "@material-ui/core";
 import React, { useContext, useState } from "react";
 import { withRouter } from "react-router-dom";
 import { ApiContext } from "../contexts/ApiContext";
 import SearchResult from "./SearchResult";
 import axios from "../axios";
-import SearchIcon from "@material-ui/icons/Search";
+// import SearchIcon from "@material-ui/icons/Search";
 
 const Search = () => {
 	const [isLoadingResults, setIsLoadingResults] = useState(false);
@@ -52,14 +52,21 @@ const Search = () => {
 					name="query"
 					value={query}
 					onChange={handleChange}
-					placeholder="Search for books by name, author, or ISBN"
+					placeholder="Search for books by name or author"
 					style={{ width: "50vw" }}
 				/>
 				<input type="submit" value="Search" />
 			</form>
-			{isLoadingResults && <Typography>Loading results...</Typography>}
+
+			{isLoadingResults && (
+				<Paper>
+					<Typography variant="h6">Loading results...</Typography>
+				</Paper>
+			)}
 			{!searchResults ? (
-				<div>No search results found</div>
+				<Paper>
+					<Typography variant="h6">No search results found</Typography>
+				</Paper>
 			) : (
 				searchResults.map((work) => {
 					return <SearchResult work={work} />;

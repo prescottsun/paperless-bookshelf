@@ -1,4 +1,4 @@
-import { CardMedia, Container, Grid, Typography } from "@material-ui/core";
+import { CardMedia, Grid, Typography } from "@material-ui/core";
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
@@ -11,7 +11,7 @@ import Reviews from "./Reviews";
 import { ApiContext } from "../contexts/ApiContext";
 import axios from "../axios";
 import AddBook from "./AddBook";
-import DeleteBook from "./DeleteBook";
+
 import StarRating from "./StarRating";
 
 const BookDetails = () => {
@@ -43,7 +43,7 @@ const BookDetails = () => {
 	return isLoading ? (
 		<div>Loading</div>
 	) : (
-		<Grid container>
+		<Grid container justify="center">
 			{/* <EmbeddedViewer isbn={book.isbn.data} /> */}
 			<Card>
 				{/* <DeleteBook goodReadsId={id} showText={true} /> */}
@@ -51,7 +51,7 @@ const BookDetails = () => {
 					<Grid container justify="space-between">
 						<Grid item>
 							<CardMedia title={book.title.data}>
-								<img src={book.image_url.data} alt="book cover image" />
+								<img src={book.image_url.data} alt="book cover" />
 							</CardMedia>
 						</Grid>
 						<Grid item>
@@ -59,6 +59,7 @@ const BookDetails = () => {
 								goodReadsId={id}
 								title={book.title.data}
 								author={book.authors.author.name.data}
+								authorId={book.authors.author.id.data}
 								imageUrl={book.image_url.data}
 								isbn={book.isbn.data}
 							/>
@@ -66,11 +67,14 @@ const BookDetails = () => {
 					</Grid>
 					<Typography variant="h5">{book.title.data}</Typography>
 					{book.authors && (
-						<Link to={`/authors/${book.authors.author.id.data}`}>
-							<Typography gutterBottom variant="h6">
-								{book.authors.author.name.data}
-							</Typography>
-						</Link>
+						<Typography
+							component={Link}
+							to={`/authors/${book.authors.author.id.data}`}
+							gutterBottom
+							variant="h6"
+						>
+							{book.authors.author.name.data}
+						</Typography>
 					)}
 
 					<Typography color="textSecondary">
@@ -96,7 +100,7 @@ const BookDetails = () => {
 				</CardContent>
 				<CardActions>
 					<Button size="small">
-						<a href={book.url.data} target="_blank">
+						<a href={book.url.data} target="_blank" rel="noreferrer">
 							View Book on GoodReads
 						</a>
 					</Button>

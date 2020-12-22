@@ -3,15 +3,15 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-import InputBase from "@material-ui/core/InputBase";
-import { fade, makeStyles, useTheme } from "@material-ui/core/styles";
+
+import { makeStyles, useTheme } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
-import BookIcon from "@material-ui/icons/Book";
-import { Link, useHistory } from "react-router-dom";
+
+import { Link } from "react-router-dom";
 import CollectionsBookmarkIcon from "@material-ui/icons/CollectionsBookmark";
 import SignInOut from "./SignInOut";
-import { Button, Container, Grid, useMediaQuery } from "@material-ui/core";
+import { Button, Grid, useMediaQuery } from "@material-ui/core";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 
@@ -41,9 +41,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Navbar = ({ user }) => {
-	const history = useHistory();
+	// const history = useHistory();
 	const classes = useStyles();
-	const [auth, setAuth] = useState(true);
+	// const [auth, setAuth] = useState(true);
 	const [anchorEl, setAnchorEl] = useState(null);
 	const open = Boolean(anchorEl);
 	const theme = useTheme();
@@ -108,13 +108,7 @@ const Navbar = ({ user }) => {
 								</Menu>
 							</Grid>
 						) : (
-							<Grid
-								item
-								xs={9}
-								justify="flex-start"
-								className="headerOptions"
-								className="headerOptions"
-							>
+							<Grid item xs={9} justify="flex-start" className="headerOptions">
 								<Button
 									component={Link}
 									to={"/"}
@@ -145,9 +139,10 @@ const Navbar = ({ user }) => {
 						)}
 						<Grid
 							container
+							justify="flex-end"
+							item
 							xs={8}
 							md={3}
-							justify="flex-end"
 							alignItems="center"
 							spacing={1}
 						>

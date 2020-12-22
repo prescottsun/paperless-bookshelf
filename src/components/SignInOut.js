@@ -1,12 +1,14 @@
-import React, { useContext } from "react";
+import React from "react";
 
 import { auth } from "../firebase";
 import firebase from "firebase/app";
 import { Avatar, Button, Grid, Typography } from "@material-ui/core";
-import { AuthContext } from "../contexts/AuthContext";
+// import { AuthContext } from "../contexts/AuthContext";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useHistory } from "react-router-dom";
 
 const SignInOut = () => {
+	const history = useHistory();
 	// const { userInfo, setUserInfo } = useContext(AuthContext);
 
 	const signInWithGoogle = async () => {
@@ -21,6 +23,7 @@ const SignInOut = () => {
 	const signOutWithGoogle = () => {
 		auth.signOut();
 		// setUserInfo(null);
+		history.push("/");
 	};
 
 	const [user] = useAuthState(auth);
@@ -29,8 +32,12 @@ const SignInOut = () => {
 		// <Grid container justify="flex-end" alignItems="center" spacing={1}>
 		<>
 			<Grid item>
-				<Button variant="contained" onClick={signOutWithGoogle}>
-					Sign Out
+				<Button
+					style={{ textTransform: "none" }}
+					variant="contained"
+					onClick={signOutWithGoogle}
+				>
+					<Typography variant="subtitle1">Sign Out</Typography>
 				</Button>
 			</Grid>
 			<Grid item>
@@ -40,8 +47,12 @@ const SignInOut = () => {
 	) : (
 		// </Grid>
 		// <Grid container justify="flex-end" alignItems="center" spacing={1}>
-		<Button variant="contained" onClick={signInWithGoogle}>
-			<Typography>Sign in with Google</Typography>
+		<Button
+			style={{ textTransform: "none" }}
+			variant="contained"
+			onClick={signInWithGoogle}
+		>
+			<Typography variant="subtitle1">Sign in with Google</Typography>
 		</Button>
 		// </Grid>
 	);

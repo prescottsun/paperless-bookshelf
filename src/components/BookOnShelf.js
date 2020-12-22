@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import React, { useEffect, useState } from "react";
+
 import Card from "@material-ui/core/Card";
-import CardActionArea from "@material-ui/core/CardActionArea";
+
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
@@ -13,11 +13,13 @@ import DeleteBook from "./DeleteBook";
 import Modal from "@material-ui/core/Modal";
 import EmbeddedViewer from "./EmbeddedViewer";
 import { Grid } from "@material-ui/core";
+import Axios from "axios";
 
 const BookOnShelf = ({ book }) => {
-	const { author, goodReadsId, imageUrl, title, isbn } = book;
+	const { author, authorId, goodReadsId, imageUrl, title } = book;
 
 	const [open, setOpen] = useState(false);
+	const [googleId, setGoogleId] = useState("");
 
 	const handleOpen = () => {
 		setOpen(true);
@@ -26,6 +28,20 @@ const BookOnShelf = ({ book }) => {
 	const handleClose = () => {
 		setOpen(false);
 	};
+
+	const titleURI = encodeURIComponent(title);
+	const authorURI = encodeURIComponent(author);
+	const getGoogleBook = async (titleURI, authorURI) => {
+		let res = await Axios.get(
+			`https://www.googleapis.com/books/v1/volumes?q=intitle:${titleURI}+inauthor:${authorURI}`
+		);
+
+		setGoogleId(res.data.items[0].id);
+	};
+
+	useEffect(() => {
+		getGoogleBook(titleURI, authorURI);
+	}, []);
 
 	return (
 		<Card>
@@ -42,17 +58,24 @@ const BookOnShelf = ({ book }) => {
 				</Grid>
 
 				<CardMedia title={title}>
-					<img src={imageUrl} />
+					<img src={imageUrl} alt={title} />
 				</CardMedia>
 
-				<Typography variant="body1" color="textSecondary" component="p">
+				<Typography
+					component={Link}
+					to={`/authors/${authorId}`}
+					variant="body1"
+					color="textSecondary"
+				>
 					{author}
 				</Typography>
 			</CardContent>
 			<CardActions>
 				<Grid container justify="space-between">
 					<Link to={`/books/${goodReadsId}`}>
-						<Button size="small">Details Page</Button>
+						<Button style={{ textTransform: "none" }} size="small">
+							Details Page
+						</Button>
 					</Link>
 
 					<Button
@@ -69,7 +92,7 @@ const BookOnShelf = ({ book }) => {
 						aria-labelledby="Book Preview"
 						aria-describedby="Book preview provided by Google Books"
 					>
-						<EmbeddedViewer isbn={isbn} />
+						<EmbeddedViewer googleId={googleId} />
 					</Modal>
 				</Grid>
 			</CardActions>

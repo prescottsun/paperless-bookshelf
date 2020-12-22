@@ -4,7 +4,7 @@ import { auth, firestore } from "../firebase";
 import firebase from "firebase/app";
 import { Button } from "@material-ui/core";
 
-const AddBook = ({ goodReadsId, title, author, imageUrl, isbn }) => {
+const AddBook = ({ goodReadsId, title, author, authorId, imageUrl, isbn }) => {
 	const { uid } = auth.currentUser;
 	const bookshelfRef = firestore.collection(`bookshelf-${uid}`);
 
@@ -14,6 +14,7 @@ const AddBook = ({ goodReadsId, title, author, imageUrl, isbn }) => {
 			goodReadsId,
 			title,
 			author,
+			authorId,
 			imageUrl,
 			isbn: parseInt(isbn),
 			createdAt: firebase.firestore.FieldValue.serverTimestamp(),
@@ -22,8 +23,12 @@ const AddBook = ({ goodReadsId, title, author, imageUrl, isbn }) => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-
-		addBook();
+		let docRef = await bookshelfRef
+			.where("goodReadsId", "==", goodReadsId)
+			.get();
+		if (docRef.empty) {
+			addBook();
+		}
 	};
 
 	return (

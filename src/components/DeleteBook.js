@@ -1,7 +1,7 @@
 import React from "react";
 
 import { auth, firestore } from "../firebase";
-import firebase from "firebase/app";
+
 import { Button, IconButton } from "@material-ui/core";
 import ClearIcon from "@material-ui/icons/Clear";
 

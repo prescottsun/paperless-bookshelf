@@ -10,6 +10,7 @@ const Reviews = ({ id, book }) => {
 				referrerPolicy="origin-when-cross-origin"
 				width="575px"
 				height="400px"
+				title="GoodReads book reviews"
 			/>
 		</Grid>
 	);
