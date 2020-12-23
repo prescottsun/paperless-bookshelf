@@ -23,21 +23,20 @@ const SearchResult = ({ work }) => {
 							<CardMedia title={work.best_book.title.data}>
 								<img src={work.best_book.image_url.data} alt="book cover" />
 							</CardMedia>
-							<Typography variant="h6">{work.best_book.title.data}</Typography>
+							<Typography variant="h5">{work.best_book.title.data}</Typography>
 							{work.best_book.author && (
 								<Button
 									component={Link}
 									to={`/authors/${work.best_book.author.id.data}`}
 									variant="text"
-									size="small"
 									style={{ textTransform: "none" }}
 								>
-									<Typography variant="h6">
+									<Typography variant="h5">
 										{work.best_book.author.name.data}
 									</Typography>
 								</Button>
 							)}
-							<Typography color="textSecondary">
+							<Typography variant="h6" color="textSecondary">
 								{`Published: ${work.original_publication_month.data}/${work.original_publication_day.data}/${work.original_publication_year.data}`}
 							</Typography>
 							<Grid container spacing={1}>

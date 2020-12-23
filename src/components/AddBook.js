@@ -34,7 +34,7 @@ const AddBook = ({ goodReadsId, title, author, authorId, imageUrl, isbn }) => {
 	return (
 		uid && (
 			<Button
-				size="small"
+				// size="small"
 				variant="contained"
 				color="primary"
 				onClick={handleSubmit}

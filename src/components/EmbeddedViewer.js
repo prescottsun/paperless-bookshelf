@@ -12,7 +12,7 @@ const EmbeddedViewer = ({ googleId }) => {
       google.books.load();
 
       function alertNotFound() {
-        alert("Preview unavailable");
+        alert("Preview Unavailable");
       }
 
       function initialize() {

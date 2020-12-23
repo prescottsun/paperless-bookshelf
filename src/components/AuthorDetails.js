@@ -48,25 +48,25 @@ const AuthorDetails = () => {
 							<img src={author.image_url.data} alt="book cover" />
 						</CardMedia>
 					</Grid>
-					<Typography gutterBottom variant="h5">
+					<Typography gutterBottom variant="h4">
 						{author.name.data}
 					</Typography>
 					{/* <Typography color="textSecondary">
 						{author.works_count.data} Works
 					</Typography> */}
-					<Typography variant="body2" component="p">
+					<Typography variant="body1">
 						{parse(`${author.about.data}`)}
 					</Typography>
 				</CardContent>
 				<CardActions>
-					<Button size="small">
+					<Button size="large">
 						<a href={author.link.data} target="_blank" rel="noreferrer">
 							View Author on GoodReads
 						</a>
 					</Button>
 				</CardActions>
 				<CardContent>
-					<Typography variant="h6" gutterBottom>
+					<Typography variant="h5" gutterBottom>
 						Author's Works
 					</Typography>
 					<Grid container>

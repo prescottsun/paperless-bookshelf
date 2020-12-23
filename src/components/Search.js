@@ -1,4 +1,4 @@
-import { Container, Paper, Typography } from "@material-ui/core";
+import { Container, Input, Paper, Typography } from "@material-ui/core";
 import React, { useContext, useState } from "react";
 import { withRouter } from "react-router-dom";
 import { ApiContext } from "../contexts/ApiContext";
@@ -47,25 +47,29 @@ const Search = () => {
 	return (
 		<Container>
 			<form onSubmit={handleSubmit}>
-				<input
-					type="text"
-					name="query"
-					value={query}
-					onChange={handleChange}
-					placeholder="Search for books by name or author"
-					style={{ width: "50vw" }}
-				/>
-				<input type="submit" value="Search" />
+				<Paper>
+					<Input
+						fullWidth
+						autoFocus
+						type="text"
+						name="query"
+						value={query}
+						onChange={handleChange}
+						placeholder="Search for books by name or author"
+						// style={{ width: "50vw" }}
+					/>
+					{/* <input type="submit" value="Search" /> */}
+				</Paper>
 			</form>
 
 			{isLoadingResults && (
 				<Paper>
-					<Typography variant="h6">Loading results...</Typography>
+					<Typography variant="h5">Loading results...</Typography>
 				</Paper>
 			)}
 			{!searchResults ? (
 				<Paper>
-					<Typography variant="h6">No search results found</Typography>
+					<Typography variant="h5">No search results found</Typography>
 				</Paper>
 			) : (
 				searchResults.map((work) => {

@@ -1,4 +1,4 @@
-import { CardMedia, Grid, Typography } from "@material-ui/core";
+import { CardMedia, Container, Grid, Typography } from "@material-ui/core";
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
@@ -43,7 +43,7 @@ const BookDetails = () => {
 	return isLoading ? (
 		<div>Loading</div>
 	) : (
-		<Grid container justify="center">
+		<Container>
 			{/* <EmbeddedViewer isbn={book.isbn.data} /> */}
 			<Card>
 				{/* <DeleteBook goodReadsId={id} showText={true} /> */}
@@ -65,19 +65,19 @@ const BookDetails = () => {
 							/>
 						</Grid>
 					</Grid>
-					<Typography variant="h5">{book.title.data}</Typography>
+					<Typography variant="h4">{book.title.data}</Typography>
 					{book.authors && (
 						<Typography
 							component={Link}
 							to={`/authors/${book.authors.author.id.data}`}
 							gutterBottom
-							variant="h6"
+							variant="h5"
 						>
 							{book.authors.author.name.data}
 						</Typography>
 					)}
 
-					<Typography color="textSecondary">
+					<Typography variant="h6" color="textSecondary">
 						{`Published: ${book.publication_month.data}/${book.publication_day["data"]}/${book.publication_year.data}`}
 					</Typography>
 
@@ -86,20 +86,20 @@ const BookDetails = () => {
 							<StarRating rating={book.average_rating.data} />
 						</Grid>
 						<Grid item>
-							<Typography variant="subtitle1" color="textSecondary">
+							<Typography variant="h6" color="textSecondary">
 								{`${book.ratings_count.data} total ratings`}
 							</Typography>
 						</Grid>
 					</Grid>
-					<Typography gutterBottom color="textSecondary">
+					<Typography gutterBottom variant="subtitle1" color="textSecondary">
 						{book.num_pages.data} Pages
 					</Typography>
-					<Typography variant="body2" component="p">
+					<Typography variant="body1">
 						{parse(`${book.description.data}`)}
 					</Typography>
 				</CardContent>
 				<CardActions>
-					<Button size="small">
+					<Button size="large">
 						<a href={book.url.data} target="_blank" rel="noreferrer">
 							View Book on GoodReads
 						</a>
@@ -109,7 +109,7 @@ const BookDetails = () => {
 					<Reviews id={id} book={book} />
 				</CardContent>
 			</Card>
-		</Grid>
+		</Container>
 	);
 };
 

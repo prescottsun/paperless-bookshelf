@@ -32,15 +32,13 @@ const BookCard = ({ book }) => {
 				<CardMedia title="Book Cover">
 					<img src={image_url.data} alt="Book Cover" />
 				</CardMedia>
-				<Typography variant="h6" component="h2">
-					{title.data}
-				</Typography>
+				<Typography variant="h5">{title.data}</Typography>
 				<Grid container spacing={1}>
 					<Grid item>
 						<StarRating rating={average_rating.data} />
 					</Grid>
 					<Grid item>
-						<Typography variant="subtitle1" color="textSecondary">
+						<Typography variant="subtitle2" color="textSecondary">
 							{`${ratings_count.data} total ratings`}
 						</Typography>
 					</Grid>
@@ -49,7 +47,7 @@ const BookCard = ({ book }) => {
 				<CardActions>
 					<Grid container justify="space-between">
 						<Link to={`/books/${id.data}`}>
-							<Button size="small" color="primary">
+							<Button size="large" color="primary">
 								Go to book page
 							</Button>
 						</Link>

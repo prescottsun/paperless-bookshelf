@@ -47,12 +47,12 @@ const BookOnShelf = ({ book }) => {
 		<Card>
 			<CardContent>
 				<Grid container>
-					<Grid item xs={9}>
-						<Typography gutterBottom variant="subtitle1">
+					<Grid item xs={10}>
+						<Typography gutterBottom variant="h6">
 							{title}
 						</Typography>
 					</Grid>
-					<Grid item xs={3}>
+					<Grid item xs={2}>
 						<DeleteBook goodReadsId={goodReadsId} showText={false} />
 					</Grid>
 				</Grid>
@@ -64,7 +64,7 @@ const BookOnShelf = ({ book }) => {
 				<Typography
 					component={Link}
 					to={`/authors/${authorId}`}
-					variant="body1"
+					variant="h6"
 					color="textSecondary"
 				>
 					{author}
@@ -73,16 +73,17 @@ const BookOnShelf = ({ book }) => {
 			<CardActions>
 				<Grid container justify="space-between">
 					<Link to={`/books/${goodReadsId}`}>
-						<Button style={{ textTransform: "none" }} size="small">
+						<Button style={{ textTransform: "none" }} size="large">
 							Details Page
 						</Button>
 					</Link>
 
 					<Button
-						size="small"
-						variant="contained"
+						variant="outlined"
 						onClick={handleOpen}
 						style={{ textTransform: "none" }}
+						size="large"
+						color="primary"
 					>
 						Preview
 					</Button>

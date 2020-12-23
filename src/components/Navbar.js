@@ -115,7 +115,9 @@ const Navbar = ({ user }) => {
 									className={classes.button}
 									// endIcon={<BookIcon />}
 								>
-									<Typography>Paperless Bookshelf</Typography>
+									<Typography style={{ color: "white" }}>
+										Paperless Bookshelf
+									</Typography>
 								</Button>
 
 								<Button
@@ -124,7 +126,9 @@ const Navbar = ({ user }) => {
 									className={classes.button}
 									endIcon={<CollectionsBookmarkIcon />}
 								>
-									<Typography>My Bookshelf</Typography>
+									<Typography style={{ color: "white" }}>
+										My Bookshelf
+									</Typography>
 								</Button>
 
 								<Button
@@ -133,7 +137,9 @@ const Navbar = ({ user }) => {
 									className={classes.button}
 									endIcon={<SearchIcon />}
 								>
-									<Typography>Search Books</Typography>
+									<Typography style={{ color: "white" }}>
+										Search Books
+									</Typography>
 								</Button>
 							</Grid>
 						)}

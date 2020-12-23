@@ -34,7 +34,7 @@ const UserBookshelf = () => {
 
 	return user ? (
 		<Container>
-			<Typography>{`${user.displayName}'s Bookshelf`}</Typography>
+			<Typography variant="h5">{`${user.displayName}'s Bookshelf`}</Typography>
 			<Grid container alignItems="stretch">
 				{books.map((book) => (
 					<Grid item xs={12} sm={4} md={3}>
@@ -46,7 +46,7 @@ const UserBookshelf = () => {
 	) : (
 		<Container>
 			<Paper>
-				<Typography variant="h5">Sign in to view your bookshelf</Typography>
+				<Typography variant="h4">Sign in to view your bookshelf</Typography>
 			</Paper>
 		</Container>
 	);

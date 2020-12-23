@@ -6,20 +6,22 @@ const Home = () => {
 	return (
 		<Container>
 			<Card>
-				<Typography variant="h6">
+				<Typography gutterBottom variant="h4">
 					Welcome to your Paperless Bookshelf.
 				</Typography>
-				<Typography>Sign in with your Google account</Typography>
-				<Typography>
+				<Typography variant="h5">Sign in with your Google account</Typography>
+				<Typography variant="h5">
 					Search for books and authors and view their detail pages
 				</Typography>
-				<Typography>Add books to your digital bookshelf</Typography>
-				<Typography>
+				<Typography variant="h5">
+					Add books to your digital bookshelf
+				</Typography>
+				<Typography variant="h5">
 					Manage books on your bookshelf and view previews of their content from
 					Google Books
 				</Typography>
 				<br />
-				<Typography>Powered by: </Typography>
+				<Typography variant="h5">Powered by: </Typography>
 
 				<img
 					src="https://www.goodreads.com/assets/press/logo-fe2ef7d630d5f23daf46230e8592cd99.png"

@@ -37,7 +37,7 @@ const SignInOut = () => {
 					variant="contained"
 					onClick={signOutWithGoogle}
 				>
-					<Typography variant="subtitle1">Sign Out</Typography>
+					<Typography variant="h6">Sign Out</Typography>
 				</Button>
 			</Grid>
 			<Grid item>
@@ -52,7 +52,7 @@ const SignInOut = () => {
 			variant="contained"
 			onClick={signInWithGoogle}
 		>
-			<Typography variant="subtitle1">Sign in with Google</Typography>
+			<Typography variant="h6">Sign in with Google</Typography>
 		</Button>
 		// </Grid>
 	);
